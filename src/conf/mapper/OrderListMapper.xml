@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.imust.mapper.OrderListMapper">
+		<insert id="addOrderList" parameterType="OrderList">
+			insert into orderlist(id,m_id,message,createDate,orderstatus) values(#{id},#{m_id},#{message},#{createDate},#{orderstatus})
+		</insert>
+		
+		<select id="getOrderListById" resultType="OrderList">
+			select * from orderlist where id=#{id}
+		</select>
+		
+		<select id="getOrderListByM_id" resultType="OrderList">
+			select * from orderlist where m_id=#{m_id} and orderstatus!=4
+		</select>
+		
+		<select id="getHistoryOrderListByM_id" resultType="OrderList">
+			select * from orderlist where m_id=#{m_id} and orderstatus=4
+		</select>
+		
+		<delete id="deleteOrderList" parameterType="String">
+			delete from orderlist where id=#{id}
+		</delete>
+		
+		<update id="updateListStatus">
+			update orderlist set orderstatus=#{status} where id=#{id}
+		</update>
+		
+		<update id="updateListPayDate">
+			update orderlist set payDate=#{payDate} where id=#{id}
+		</update>
+		
+		<update id="updateListDeliveryDate">
+			update orderlist set deliveryDate=#{deliveryDate} where id=#{id}
+		</update>
+		
+		<update id="updateListComfirmDate">
+			update orderlist set comfirmDate=#{comfirmDate} where id=#{id}
+		</update>
+		
+</mapper>

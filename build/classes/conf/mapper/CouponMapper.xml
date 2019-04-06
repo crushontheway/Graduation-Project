@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.imust.mapper.CouponMapper">
+	<select id="listAll" resultType="Coupon">
+		select * from coupon		
+	</select>
+	
+	<select id="getCouponById" resultType="Coupon">
+		select * from coupon where id=#{id}
+	</select>
+	
+	<select id="getCouponByS_id" resultType="Coupon">
+		select * from coupon where s_id=#{s_id}
+	</select>
+	
+	<delete id="deleteCouponById" parameterType="Integer">
+		delete from coupon where id=#{id}
+	</delete>
+	
+	<insert id="add" parameterType="Coupon">
+		insert into coupon(s_id,reducePrice,limitPrice) values(#{s_id},#{reducePrice},#{limitPrice})
+	</insert>
+	
+	
+</mapper>

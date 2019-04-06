@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.imust.mapper.MemberMapper">
+	
+	<select id="list" resultType="Member">
+		select * from member;
+	</select>
+	
+	<select id="getMemberByid" resultType="Member">
+		select * from member where id=#{id}
+	</select>
+	
+	<insert id="add" parameterType="Member">
+		insert into
+		member(id,passw,username,tel,address)
+		values(#{id},#{password},#{username},#{tel},#{address})
+	</insert>
+
+	<select id="isExist" resultType="Integer">
+		select count(*) from member where id=#{id}
+	</select>
+	
+	<select id="login" resultType="Member">
+		select * from member where id=#{id} and passw=#{password}
+	</select>
+	
+	<update id="update" parameterType="Member">
+		update member set passw=#{password},username=#{username},tel=#{tel},address=#{address} where id=#{id}
+	</update>
+</mapper>
